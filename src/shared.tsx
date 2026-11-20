@@ -102,12 +102,12 @@ export function useActiveSection(ids: string[], offset = 140) {
 }
 
 /* ─── Shared icons ─── */
-export const BirdLogo = () => (
+export const BirdLogo = ({ size = 220 }: { size?: number }) => (
   <img
     src={birdNestLogo}
     alt="Bird Nest Logo"
-    width="170"
-    height="170"
+    width={size}
+    height={size}
     style={{ objectFit: "contain", borderRadius: "50%" }}
   />
 );

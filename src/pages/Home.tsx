@@ -4018,9 +4018,6 @@ function CompanyJourney() {
             transition: "opacity .7s ease, transform .7s ease",
           }}
         >
-          <SectionLabel>
-            <span style={{ color: "#000000" }}>OUR STORY</span>
-          </SectionLabel>
           <h2
             style={{
               fontFamily: "'Playfair Display',serif",

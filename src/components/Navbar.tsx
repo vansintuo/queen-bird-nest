@@ -59,7 +59,7 @@ export default function Navbar() {
     >
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
         <div
-          style={{ display: "flex", alignItems: "center", height: 72, gap: 16 }}
+          style={{ display: "flex", alignItems: "center", height: 96, gap: 16 }}
         >
           {/* Logo */}
           <button
@@ -75,7 +75,7 @@ export default function Navbar() {
               padding: 0,
             }}
           >
-            <BirdLogo />
+            <BirdLogo size={220} />
 
           </button>
 
@@ -133,7 +133,7 @@ export default function Navbar() {
               style={{
                 display: "block",
                 padding: "12px 0",
-                fontSize: 15,
+                fontSize: 16,
                 fontWeight: activeSection === id ? 700 : 400,
                 color: activeSection === id ? "#000000" : "#000000",
                 textDecoration: "none",
