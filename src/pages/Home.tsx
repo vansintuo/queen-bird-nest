@@ -255,36 +255,43 @@ const PROCESS_STEPS = [
     num: "01",
     label: "Bird Nest Farming",
     icon: "⌂",
+    desc: "",
   },
   {
     num: "02",
     label: "Nest Harvesting",
     icon: "✦",
+    desc: "",
   },
   {
     num: "03",
     label: "Initial Inspection",
     icon: "◎",
+    desc: "",
   },
   {
     num: "04",
     label: "Cleaning & Feather Removal",
     icon: "❧",
+    desc: "",
   },
   {
     num: "05",
     label: "Soaking & Preparation",
     icon: "▣",
+    desc: "",
   },
   {
     num: "06",
     label: "Cooking & Sterilization",
     icon: "▣",
+    desc: "",
   },
   {
     num: "07",
     label: "Packaging",
     icon: "▣",
+    desc: "",
   },
 ];
 
@@ -293,43 +300,51 @@ const PROCESS_STEPS_DRY = [
     num: "01",
     label: "Bird Nest Farming",
     icon: "⌂",
+    desc: "",
   },
   {
     num: "02",
     label: "Nest Harvesting",
     icon: "✦",
+    desc: "",
   },
   {
     num: "03",
     label: "Initial Inspection",
     icon: "◎",
+    desc: "",
   },
   {
     num: "04",
     label: "Quality Grading",
     icon: "❧",
-  },  {
+    desc: "",
+  },
+  {
     num: "05",
     label: "Cleaning & Feather Removal",
     icon: "❧",
+    desc: "",
   },
   {
     num: "06",
     label: "Shaping & Molding",
     icon: "▣",
+    desc: "",
   },
   {
     num: "07",
     label: "Controlled Drying",
     icon: "▣",
+    desc: "",
   },
   {
     num: "08",
     label: "Final Inspection & Packaging",
     icon: "▣",
+    desc: "",
   },
 ];
-
 
 function Hero() {
   return (
