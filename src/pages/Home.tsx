@@ -253,35 +253,83 @@ const PRODUCTS: Product[] = [
 const PROCESS_STEPS = [
   {
     num: "01",
-    label: "HARVEST",
+    label: "Bird Nest Farming",
     icon: "⌂",
-    desc: "Nests are carefully harvested from managed swiftlet farms.",
   },
   {
     num: "02",
-    label: "CLEANING",
+    label: "Nest Harvesting",
     icon: "✦",
-    desc: "Impurities are removed through a meticulous cleaning process.",
   },
   {
     num: "03",
-    label: "QUALITY CHECK",
+    label: "Initial Inspection",
     icon: "◎",
-    desc: "Every nest is inspected for quality and purity.",
   },
   {
     num: "04",
-    label: "PREPARATION",
+    label: "Cleaning & Feather Removal",
     icon: "❧",
-    desc: "Prepared with care to preserve nutrition and texture.",
   },
   {
     num: "05",
-    label: "PACKAGING",
+    label: "Soaking & Preparation",
     icon: "▣",
-    desc: "Hygienically packed to ensure freshness and safety.",
+  },
+  {
+    num: "06",
+    label: "Cooking & Sterilization",
+    icon: "▣",
+  },
+  {
+    num: "07",
+    label: "Packaging",
+    icon: "▣",
   },
 ];
+
+const PROCESS_STEPS_DRY = [
+  {
+    num: "01",
+    label: "Bird Nest Farming",
+    icon: "⌂",
+  },
+  {
+    num: "02",
+    label: "Nest Harvesting",
+    icon: "✦",
+  },
+  {
+    num: "03",
+    label: "Initial Inspection",
+    icon: "◎",
+  },
+  {
+    num: "04",
+    label: "Quality Grading",
+    icon: "❧",
+  },  {
+    num: "05",
+    label: "Cleaning & Feather Removal",
+    icon: "❧",
+  },
+  {
+    num: "06",
+    label: "Shaping & Molding",
+    icon: "▣",
+  },
+  {
+    num: "07",
+    label: "Controlled Drying",
+    icon: "▣",
+  },
+  {
+    num: "08",
+    label: "Final Inspection & Packaging",
+    icon: "▣",
+  },
+];
+
 
 function Hero() {
   return (
@@ -2400,7 +2448,7 @@ function ProcessDrying() {
           style={{ display: "flex", alignItems: "flex-start" }}
           className="process-steps"
         >
-          {PROCESS_STEPS.map((step, i) => (
+          {PROCESS_STEPS_DRY.map((step, i) => (
             <div
               key={i}
               style={{ display: "flex", alignItems: "flex-start", flex: 1 }}
