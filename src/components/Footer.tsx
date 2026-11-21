@@ -1,4 +1,4 @@
-import { BirdLogo, BirdDecor, ArrowRight, C } from "../shared";
+import { BirdLogo } from "../shared";
 import { useState } from "react";
 import isoVerify from "../images/iso_verify.png";
 const PhoneIcon = () => (
@@ -69,14 +69,19 @@ const SOCIALS = [
 type FooterLinkProps = {
   to: string;
   children: string;
+  icon?: string;
 };
 
-function FooterLink({ to, children }: FooterLinkProps) {
+function FooterLink({ to, children, icon }: FooterLinkProps) {
   const [hov, setHov] = useState(false);
+  const isExternal = /^https?:\/\//.test(to);
   return (
     <a
       href={to}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
       onClick={(e) => {
+        if (isExternal) return;
         e.preventDefault();
         const [path, hash] = to.split("#");
         if (hash) {
@@ -92,7 +97,10 @@ function FooterLink({ to, children }: FooterLinkProps) {
       onMouseEnter={() => setHov(true)}
       onMouseLeave={() => setHov(false)}
       style={{
-        display: "block",
+        display: "flex",
+        alignItems: "center",
+        gap: 10,
+        width: "max-content",
         fontSize: 13,
         color: hov ? "#FFFFFF" : "rgba(255,255,255,0.5)",
         textDecoration: "none",
@@ -101,44 +109,22 @@ function FooterLink({ to, children }: FooterLinkProps) {
         cursor: "pointer",
       }}
     >
+      {icon && (
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          style={{ flexShrink: 0 }}
+        >
+          <path d={icon} />
+        </svg>
+      )}
       {children}
-    </a>
-  );
-}
-
-function SocialBtn({ s }: { s: (typeof SOCIALS)[0] }) {
-  const [hov, setHov] = useState(false);
-  return (
-    <a
-      href={s.url}
-      aria-label={s.label}
-      onMouseEnter={() => setHov(true)}
-      onMouseLeave={() => setHov(false)}
-      style={{
-        width: 34,
-        height: 34,
-        borderRadius: "50%",
-        border: `1px solid ${hov ? C.goldLight : "rgba(184,134,11,0.3)"}`,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        color: hov ? "#FFFFFF" : "rgba(255,255,255,0.7)",
-        textDecoration: "none",
-        transition: "all 0.2s",
-      }}
-    >
-      <svg
-        width="13"
-        height="13"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d={s.path} />
-      </svg>
     </a>
   );
 }
@@ -152,41 +138,60 @@ export default function Footer() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "2fr 1fr 1fr 1fr 1.2fr",
+            gridTemplateColumns: "1.6fr 1fr 1fr 1.3fr",
             gap: 48,
             marginBottom: 56,
           }}
           className="footer-grid"
         >
-          {/* Brand */}
+          {/* ISO verification */}
           <div>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 10,
-                marginBottom: 16,
-              }}
-            >
+            <div style={{ marginBottom: 20 }}>
               <BirdLogo />
             </div>
+            <h4
+              style={{
+                fontSize: 10,
+                fontWeight: 700,
+                color: "#FFFFFF",
+                letterSpacing: "0.14em",
+                marginBottom: 20,
+              }}
+            >
+              ISO VERIFIED
+            </h4>
             <p
               style={{
                 fontSize: 13,
                 lineHeight: 1.75,
                 maxWidth: 260,
-                marginBottom: 24,
+                marginBottom: 20,
                 color: "rgba(255,255,255,0.5)",
               }}
             >
-              Dedicated to providing premium edible bird's nest with
-              uncompromising quality and sincerity.
+              Every batch is produced under an audited ISO management system,
+              from farm collection through to cleaning, grading and packing.
             </p>
-            <div style={{ display: "flex", gap: 14 }}>
-              {SOCIALS.map((s) => (
-                <SocialBtn key={s.label} s={s} />
-              ))}
-            </div>
+            <a
+              href="#quality"
+              onClick={(e) => {
+                e.preventDefault();
+                document
+                  .getElementById("quality")
+                  ?.scrollIntoView({ behavior: "smooth", block: "start" });
+              }}
+              title="View ISO certification"
+              style={{ display: "block", width: "max-content" }}
+            >
+              <img
+                src={isoVerify}
+                alt="ISO certification"
+                loading="lazy"
+                width="120"
+                height="120"
+                style={{ objectFit: "contain", borderRadius: "50%" }}
+              />
+            </a>
           </div>
 
           <div>
@@ -204,6 +209,8 @@ export default function Footer() {
             {[
               { label: "Our Process", to: "/#process" },
               { label: "Contact", to: "/#contact" },
+              { label: "Products", to: "/#products" },
+              { label: "The Process", to: "/#process" },
             ].map(({ label, to }) => (
               <FooterLink key={label} to={to}>
                 {label}
@@ -220,20 +227,16 @@ export default function Footer() {
                 marginBottom: 20,
               }}
             >
-              OUR PRODUCTS
+              SOCIAL MEDIA
             </h4>
-            {[
-              { label: "Products", to: "/#products" },
-              { label: "The Process", to: "/#process" },
-            ].map(({ label, to }) => (
-              <FooterLink key={label} to={to}>
-                {label}
+            {SOCIALS.map((s) => (
+              <FooterLink key={s.label} to={s.url} icon={s.path}>
+                {s.label}
               </FooterLink>
             ))}
           </div>
 
-          <div>
-            <h4
+          <div> <h4
               style={{
                 fontSize: 10,
                 fontWeight: 700,
@@ -250,7 +253,10 @@ export default function Footer() {
                 lines: ["+855 69 27 22 11"],
               },
               { icon: <EmailIcon />, lines: ["queenwhitebirdnest@gmail.com"] },
-              { icon: <MapIcon />, lines: ["សង្កាត់គោកឃ្លាង ខណ្ឌសែនសុខ រាជធានីភ្នំពេញ"] },
+              {
+                icon: <MapIcon />,
+                lines: ["សង្កាត់គោកឃ្លាង ខណ្ឌសែនសុខ រាជធានីភ្នំពេញ"],
+              },
             ].map((c, i) => (
               <div
                 key={i}
@@ -261,9 +267,7 @@ export default function Footer() {
                   alignItems: "flex-start",
                 }}
               >
-                <span
-                  style={{ color: "#FFFFFF", flexShrink: 0, marginTop: 2 }}
-                >
+                <span style={{ color: "#FFFFFF", flexShrink: 0, marginTop: 2 }}>
                   {c.icon}
                 </span>
                 <div>
@@ -285,74 +289,12 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ISO verification */}
-        <div
-          className="footer-iso"
-          style={{
-            marginBottom: 36,
-            display: "flex",
-            alignItems: "center",
-            gap: 32,
-            flexWrap: "wrap",
-          }}
-        >
-          <div style={{ maxWidth: 260 }}>
-            <h4
-              style={{
-                fontSize: 10,
-                fontWeight: 700,
-                color: "#FFFFFF",
-                letterSpacing: "0.14em",
-                margin: "0 0 10px",
-              }}
-            >
-              ISO VERIFIED
-            </h4>
-            <p
-              style={{
-                fontSize: 12.5,
-                lineHeight: 1.7,
-                color: "rgba(255,255,255,0.45)",
-                margin: 0,
-              }}
-            >
-              Every batch is produced under an audited ISO management system,
-              from farm collection through to cleaning, grading and packing.
-            </p>
-          </div>
-          <a
-            href="#quality"
-            onClick={(e) => {
-              e.preventDefault();
-              document
-                .getElementById("quality")
-                ?.scrollIntoView({ behavior: "smooth", block: "start" });
-            }}
-            title="View ISO certification"
-            style={{
-              display: "block",
-              flex: "1 1 320px",
-              minWidth: 260,
-              padding: 10,
-            }}
-          >
-            <img
-              src={isoVerify}
-              alt="Bird Nest Logo"
-              loading="lazy"
-              width="150"
-              height="150"
-              style={{ objectFit: "contain", borderRadius: "50%" }}
-            />
-          </a>
-        </div>
-
         <div
           style={{
             borderTop: "1px solid rgba(184,134,11,0.15)",
             paddingTop: 28,
             display: "flex",
-            justifyContent: "space-between",
+            justifyContent: "center",
             alignItems: "center",
             flexWrap: "wrap",
             gap: 12,
@@ -361,23 +303,6 @@ export default function Footer() {
           <p style={{ fontSize: 12, color: "rgba(255,255,255,0.28)" }}>
             © 2026 QUEEN. All Rights Reserved.
           </p>
-          <div style={{ display: "flex", gap: 24 }}>
-            {["Privacy Policy", "Terms of Service", "Cookie Policy"].map(
-              (l) => (
-                <a
-                  key={l}
-                  href="#"
-                  style={{
-                    fontSize: 11,
-                    color: "rgba(255,255,255,0.28)",
-                    textDecoration: "none",
-                  }}
-                >
-                  {l}
-                </a>
-              ),
-            )}
-          </div>
         </div>
       </div>
 

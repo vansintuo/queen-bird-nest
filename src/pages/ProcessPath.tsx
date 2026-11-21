@@ -1,55 +1,58 @@
-import { useState } from "react"
-import { useNavigate } from "react-router"
-import { ArrowRight, C } from "../shared"
-import cleanBirdnest from "../images/grand/clean_birdnest.jpg"
+import { useState } from "react";
+import { useNavigate } from "react-router";
+import { ArrowRight, C } from "../shared";
+import cleanBirdnest from "../images/grand/clean_birdnest.jpg";
 import {
   farmToCupSteps,
   farmToDryingSteps,
   type ProcessStep,
-} from "../processData"
+} from "../processData";
 
 type ProcessPathProps = {
-  variant: "cup" | "drying"
-  embedded?: boolean
-}
+  variant: "cup" | "drying";
+  embedded?: boolean;
+};
 
-export default function ProcessPath({ variant, embedded = false }: ProcessPathProps) {
-  const navigate = useNavigate()
-  const [active, setActive] = useState(0)
-  const isCup = variant === "cup"
-  const steps: ProcessStep[] = isCup ? farmToCupSteps : farmToDryingSteps
-  const title = isCup ? "Farm to Cup" : "Farm to Drying"
+export default function ProcessPath({
+  variant,
+  embedded = false,
+}: ProcessPathProps) {
+  const navigate = useNavigate();
+  const [active, setActive] = useState(0);
+  const isCup = variant === "cup";
+  const steps: ProcessStep[] = isCup ? farmToCupSteps : farmToDryingSteps;
+  const title = isCup ? "Farm to Cup" : "Farm to Drying";
   const subtitle = isCup
     ? "From ethical sourcing to premium packaging — the path behind every cup."
-    : "Checking, selecting, and drying — the path that preserves natural purity."
+    : "Checking, selecting, and drying — the path that preserves natural purity.";
 
-  const stepId = (i: number) => `path-step-${variant}-${i}`
+  const stepId = (i: number) => `path-step-${variant}-${i}`;
 
   const goToStep = (i: number) => {
-    setActive(i)
+    setActive(i);
     document
       .getElementById(stepId(i))
-      ?.scrollIntoView({ behavior: "smooth", block: "center" })
-  }
+      ?.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
 
   return (
     <div className={`pp-page${embedded ? " embedded" : ""}`}>
       {!embedded && (
-      <section className="pp-hero">
-        <img src={cleanBirdnest} alt="Cleaned premium bird's nest" />
-        <div className="pp-hero-overlay" />
-        <div className="pp-container pp-hero-content">
-          <p className="pp-breadcrumb">
-            <button type="button" onClick={() => navigate("/")}>
-              Home
-            </button>
-            <span>/</span>
-            {title}
-          </p>
-          <h1 style={{fontFamily:'tahoma'}}>{title}</h1>
-          <p className="pp-hero-subtitle">{subtitle}</p>
-        </div>
-      </section>
+        <section className="pp-hero">
+          <img src={cleanBirdnest} alt="Cleaned premium bird's nest" />
+          <div className="pp-hero-overlay" />
+          <div className="pp-container pp-hero-content">
+            <p className="pp-breadcrumb">
+              <button type="button" onClick={() => navigate("/")}>
+                Home
+              </button>
+              <span>/</span>
+              {title}
+            </p>
+            <h1 style={{ fontFamily: "tahoma" }}>{title}</h1>
+            <p className="pp-hero-subtitle">{subtitle}</p>
+          </div>
+        </section>
       )}
 
       {/* <section className="pp-steps-intro">
@@ -103,8 +106,12 @@ export default function ProcessPath({ variant, embedded = false }: ProcessPathPr
           <div className="pp-container pp-cta-inner">
             <div>
               <p className="pp-label">QUEEN BIRD NEST</p>
-              <h2>Discover the Pure Essence of Nature with Our Premium Bird Nests</h2>
-              <p>Experience unmatched quality, safety, and care with every order.</p>
+              <h2>
+                Discover the Pure Essence of Nature with Our Premium Bird Nests
+              </h2>
+              <p>
+                Experience unmatched quality, safety, and care with every order.
+              </p>
             </div>
             <button type="button" onClick={() => navigate("/#products")}>
               SHOP NOW <ArrowRight />
@@ -161,5 +168,5 @@ export default function ProcessPath({ variant, embedded = false }: ProcessPathPr
         }
       `}</style>
     </div>
-  )
+  );
 }
