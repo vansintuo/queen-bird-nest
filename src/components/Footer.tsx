@@ -169,28 +169,6 @@ export default function Footer() {
               }}
             >
               <BirdLogo />
-              <div>
-                <div
-                  style={{
-                    fontFamily: "'Playfair Display', serif",
-                    fontSize: 18,
-                    fontWeight: 700,
-                    color: "rgba(255,255,255,0.95)",
-                    letterSpacing: "0.04em",
-                  }}
-                >
-                  QUEEN
-                </div>
-                <div
-                  style={{
-                    fontSize: 8,
-                    color: "#FFFFFF",
-                    letterSpacing: "0.18em",
-                  }}
-                >
-                  BIRD'S NEST
-                </div>
-              </div>
             </div>
             <p
               style={{
@@ -224,7 +202,6 @@ export default function Footer() {
               QUICK LINKS
             </h4>
             {[
-              { label: "About Us", to: "/#about" },
               { label: "Our Process", to: "/#process" },
               { label: "Contact", to: "/#contact" },
             ].map(({ label, to }) => (
@@ -248,7 +225,6 @@ export default function Footer() {
             {[
               { label: "Products", to: "/#products" },
               { label: "The Process", to: "/#process" },
-              { label: "Certifications", to: "/#quality" },
             ].map(({ label, to }) => (
               <FooterLink key={label} to={to}>
                 {label}

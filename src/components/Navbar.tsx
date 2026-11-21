@@ -52,8 +52,8 @@ export default function Navbar() {
         left: 0,
         right: 0,
         zIndex: 100,
-        background: scrolled ? "#FAF7F2" : "transparent",
-        borderBottom: scrolled ? "1px solid rgba(184,134,11,0.12)" : "none",
+        background: "#FAF7F2",
+        borderBottom: "1px solid rgba(184,134,11,0.12)",
         transition: "all 0.35s ease",
       }}
     >

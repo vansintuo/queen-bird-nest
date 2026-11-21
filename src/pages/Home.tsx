@@ -2416,7 +2416,7 @@ function ProcessDrying() {
       ref={ref}
       style={{
         background: C.brown,
-        padding: "96px 0",
+        padding: "20px 0",
         position: "relative",
         overflow: "hidden",
       }}
@@ -2460,7 +2460,11 @@ function ProcessDrying() {
           </h2>
         </div>
         <div
-          style={{ display: "flex", alignItems: "flex-start" }}
+          style={{
+            display: "flex",
+            alignItems: "flex-start",
+            marginTop: "10px",
+          }}
           className="process-steps"
         >
           {PROCESS_STEPS_DRY.map((step, i) => (
@@ -3657,32 +3661,8 @@ function Contact() {
             <SectionLabel>
               <span style={{ color: "#000000" }}>GET IN TOUCH</span>
             </SectionLabel>
-            <h2
-              style={{
-                fontFamily: "'Playfair Display',serif",
-                fontSize: "clamp(28px,3.5vw,40px)",
-                fontWeight: 700,
-                color: "#000000",
-                lineHeight: 1.2,
-                marginBottom: 12,
-              }}
-            >
-              We Would Love to
-              <br />
-              <span style={{ color: "#000000" }}>Hear From You</span>
-            </h2>
-            <p
-              style={{
-                fontSize: 14,
-                color: "#000000",
-                lineHeight: 1.8,
-                marginBottom: 32,
-                maxWidth: 380,
-              }}
-            >
-              Questions about our grades, sourcing, or where to find us? Reach
-              out and our team will get back to you shortly.
-            </p>
+
+    
           </div>
 
           {CONTACTS.map((c, i) => (
@@ -4516,7 +4496,7 @@ function CompanyValues() {
 function CompanyAbout() {
   return (
     <>
-      <CompanyIntro />
+      {/* <CompanyIntro /> */}
       <CompanyJourney />
       {/* <CompanyCraft /> */}
     </>
@@ -4810,7 +4790,7 @@ export default function Home() {
       {/* <Process /> */}
       <ProcessSteps />
       {/* <NestToNourishment /> */}
-      <TrustStats />
+      {/* <TrustStats /> */}
       <CompanyAbout />
       <Contact />
     </>

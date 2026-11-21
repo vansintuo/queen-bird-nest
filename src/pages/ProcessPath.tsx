@@ -46,13 +46,13 @@ export default function ProcessPath({ variant, embedded = false }: ProcessPathPr
             <span>/</span>
             {title}
           </p>
-          <h1>{title}</h1>
+          <h1 style={{fontFamily:'tahoma'}}>{title}</h1>
           <p className="pp-hero-subtitle">{subtitle}</p>
         </div>
       </section>
       )}
 
-      <section className="pp-steps-intro">
+      {/* <section className="pp-steps-intro">
         <div className="pp-container">
           <p className="pp-label">OUR PROCESS PATH</p>
           <p className="pp-intro-copy">{subtitle}</p>
@@ -70,7 +70,7 @@ export default function ProcessPath({ variant, embedded = false }: ProcessPathPr
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="pp-details">
         <div className="pp-container">
