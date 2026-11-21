@@ -2274,7 +2274,7 @@ function Process() {
       ref={ref}
       style={{
         background: C.brown,
-        padding: "96px 0",
+        padding: "20px 0",
         position: "relative",
         overflow: "hidden",
       }}
