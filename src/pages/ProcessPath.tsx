@@ -140,7 +140,7 @@ export default function ProcessPath({ variant, embedded = false }: ProcessPathPr
         .pp-step-image { position: relative; width: 50%; aspect-ratio: 4 / 3; overflow: hidden; background: #FFFFFF; }
         .pp-step-image img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
         .pp-step:hover .pp-step-image img { transform: scale(1.03); }
-        .pp-step-image span { position: absolute; left: 0; bottom: 0; background: #B8860B; color: #fff; font-family: 'Cormorant Garamond', serif; font-size: 44px; padding: 4px 18px; }
+        .pp-step-image span { position: absolute; left: 0; bottom: 0; background: #B8860B; color: #fff; font-family: Tahoma, sans-serif; font-size: 44px; padding: 4px 18px; }
         .pp-step-copy { width: 50%; }
         .pp-step-copy h3 { font-family: 'Cormorant Garamond', serif; font-size: clamp(30px, 3.5vw, 44px); font-weight: 600; line-height: 1.1; color: #000000; margin-bottom: 20px; }
         .pp-step-copy > p { font-size: 16px; line-height: 1.85; color: #000000; max-width: 520px; }
